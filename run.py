@@ -19,7 +19,7 @@ parser.add_argument('--seeds', nargs='+', type=int, help='List of seed values fo
 parser.add_argument('--dataset', choices=list(TabularDataset.dataset_params.keys()), type=str, required=True)
 parser.add_argument('--epochs', type=int, default=100, help='Number of training epochs')
 parser.add_argument('--train_blackbox_model', action='store_true', help='Train BB model')
-parser.add_argument('--model_name', choices=['nn', 'xgb', 'rf'], type=str, required=True, help='Name of the model to train')
+parser.add_argument('--model_name', choices=['xgb', 'rf'], type=str, required=True, help='Name of the model to train')
 parser.add_argument('--scoring', default='accuracy', type=str, help='Scoring method for the model')
 parser.add_argument('--reductionist_type', type=str, choices=['DP', 'EO'])
 parser.add_argument('--reductionist_difference_bound', nargs='*', type=float, 
@@ -33,7 +33,6 @@ parser.add_argument('--eq_odds_values', nargs='+', type=float, help='List of Equ
 parser.add_argument('--run_max_fidelity', action='store_true', help='Run max fidelity gap metrics')
 parser.add_argument('--run_stab', action='store_true', help='Run average stability metrics')
 parser.add_argument('--run_reco', action='store_true', help='Run consistency metrics')
-parser.add_argument('--run_mean_fidelity', action='store_true', help='Run mean fidelity gap metrics')
 parser.add_argument('--gender', type=str, choices=['male', 'female', 'both'], help='Gender for which to run the metrics')
 parser.add_argument('--age', type=str, choices=['g0', 'g1', 'both'], help='Group for each range where g_0 corresponds to age leq 43')
 parser.add_argument('--race', type=str, choices=['afr', 'cau', 'both'], help='Race for which to run the metrics')
