@@ -267,8 +267,8 @@ if rank == 0:
     path_mapping = {
         'max_fidelity': {
             'COMPAS': ".../results/max_fid/compas",
-            'ACSIncome': ".../results/results/max_fid/income",
-            'ACSEmployment': ".../results/results/max_fid/employ",
+            'ACSIncome': ".../results/max_fid/income",
+            'ACSEmployment': ".../results/max_fid/employ",
         },
         
         'reco': {
@@ -296,12 +296,12 @@ if rank == 0:
             },
             'ACSEmployment': {
                 'g0': ".../results/stability/employ/g0",
-                'g1': ".../results/employ/g1"
+                'g1': ".../results/stability/employ/g1"
             },
         }
     }
 
-    analysis_type = 'max_fidelity' if args.run_max_fidelity else 'mean_fidelity' if args.run_mean_fidelity else 'reco' if args.run_reco else 'stab' if args.run_stab else None
+    analysis_type = 'max_fidelity' if args.run_max_fidelity else 'reco' if args.run_reco else 'stab' if args.run_stab else None
     if analysis_type is None:
         raise ValueError("No analysis type selected.")
     
@@ -328,7 +328,7 @@ results = {}
 
 for bound in jobs:
     #print(f"Processing bound: {bound}")
-    dem_parity, max_fidelity_results, mean_fidelity_results, stab_results, reco_results = run_parallel_bound_analysis(args, bound, base_unfairness, args.seeds, g_path)
+    dem_parity, max_fidelity_results, stab_results, reco_results = run_parallel_bound_analysis(args, bound, base_unfairness, args.seeds, g_path)
     results[bound] = {'dem_parity': dem_parity, 'max_fidelity': max_fidelity_results, 'stab': stab_results, 'reco': reco_results}
 
 # Gather results at root
